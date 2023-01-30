@@ -71,6 +71,7 @@ class Utility(commands.Cog, name="유틸리티"):
             result = [random.choice(jobs), random.choice(sub)]
 
         embed, view = job_view(self.bot, result[0])
+        view.inter = inter
         rd = random.randint(1, 100)
         text = f"> 랜덤 선택된 직업은 **{result[0].emote} {result[0].name}**입니다."
         if rd == 57:
