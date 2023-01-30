@@ -3,7 +3,8 @@ import random
 import disnake
 from disnake.ext import commands
 
-from utils import Episode, fetch_episode, job_view
+from utils.episodes import Episode, fetch_episode
+from utils.jobs import job_view
 
 
 class Utility(commands.Cog, name="유틸리티"):
