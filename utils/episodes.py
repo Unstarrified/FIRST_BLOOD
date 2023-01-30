@@ -29,6 +29,7 @@ class Episode:
                     for d in data["maps"][map.code]["jobs"]["primary"]:
                         self.sub[map.code].append(fetch_job(self, d))
         else:
+            self.jobs = []
             for d in data["jobs"]["primary"]:
                 self.jobs.append(fetch_job(self, d))
             if data["jobs"]["sub"] != []:
