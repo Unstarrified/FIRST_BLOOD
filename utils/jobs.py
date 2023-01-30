@@ -7,7 +7,7 @@ import disnake
 
 class Job:
     class Skill:
-        def __init__(self, job: Job, data: dict) -> None:
+        def __init__(self, job: "Job", data: dict) -> None:
             self._data = data
             self.source = job
             self.name = data["name"]
