@@ -52,7 +52,10 @@ class SkillSelection(disnake.ui.View):
             self.skills = skills
             options = []
             for skill in skills:
-                option = disnake.SelectOption(label=skill.name, description=f"{skill.description[:95]}...", value=str(self.skills.index(skill)), emoji="🌟")
+                if len(skill.description) > 100:
+                    option = disnake.SelectOption(label=skill.name, description=f"{skill.description[:95]}...", value=str(self.skills.index(skill)), emoji="🌟")
+                else:
+                    option = disnake.SelectOption(label=skill.name, description=skill.description, value=str(self.skills.index(skill)), emoji="🌟")
                 options.append(option)
             super().__init__(placeholder="정보를 확인할 스킬을 선택해주세요.", options=options, max_values=1, min_values=1, disabled=False)
         
