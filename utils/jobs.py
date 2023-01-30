@@ -130,6 +130,7 @@ def skill_embed(bot: commands.Bot, skill: Job.Skill) -> disnake.Embed:
     embed.add_field(name="스킬 범위", value=skill.range)
     embed.add_field(name="스킬 쿨타임", value=skill.cooldown)
     if len(skill.special) != 0:
+        specs = ""
         for spec in skill.special:
             specs += f"{spec}\n"
         embed.add_field(name="특수사항", value=specs, inline=False)
