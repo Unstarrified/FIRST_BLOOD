@@ -48,7 +48,7 @@ class Job:
 
 class SkillSelection(disnake.ui.View):
     class SkillSelect(disnake.ui.StringSelect):
-        def __init__(self, skills: List[Skill]) -> None:
+        def __init__(self, skills: List[Job.Skill]) -> None:
             self.skills = skills
             options = []
             for skill in skills:
