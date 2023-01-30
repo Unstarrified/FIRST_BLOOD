@@ -5,7 +5,7 @@ from datetime import datetime, timezone
 import disnake
 from disnake.ext import commands
 
-from utils import Episode, fetch_episode, fetch_job
+from utils import Episode, fetch_episode
 
 
 class Utility(commands.Cog, name="유틸리티"):
@@ -55,7 +55,7 @@ class Utility(commands.Cog, name="유틸리티"):
             return await inter.edit_original_message(content=":boom: > 해당 에피소드의 특수성으로 인해 아직 지원되지 않는 기능입니다.")
         episode = fetch_episode(episode)
         if name == "apocalypse":
-            view = self.MapSelect(inter)
+            view = self.MapSelect(episode, inter)
             await inter.edit_original_message(view=view)
             await view.wait()
             if view.result is None:
