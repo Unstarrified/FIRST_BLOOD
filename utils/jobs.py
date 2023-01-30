@@ -43,7 +43,7 @@ class Job:
         self.color = disnake.Colour(color)
         self.skills = []
         for skill in data["skills"]:
-            self.skills.append(self.Skill(skill))
+            self.skills.append(self.Skill(self, skill))
 
 
 class SkillSelection(disnake.ui.View):
