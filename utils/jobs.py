@@ -81,7 +81,7 @@ class SkillSelection(disnake.ui.View):
     async def _end(self, button: disnake.ui.Button, inter: disnake.MessageInteraction) -> None:
         embed = disnake.Embed(description="곧 연구 보고서 뷰어가 종료됩니다.", color=0xFF0000)
         embed.set_footer(text="FIRST BLOOD 프로젝트", icon_url=self.inter.bot.user.display_avatar.url)
-        await inter.response.edit_message(embed=embed)
+        await inter.response.edit_message(content="", embed=embed, view=None)
         msg = await self.inter.original_response()
         await msg.delete(delay=1)
         self.stop()
