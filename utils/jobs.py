@@ -90,7 +90,7 @@ def fetch_job(episode: Any, code: str) -> Job:
     job = Job(episode, job)
     return job
 
-def job_view(bot: commands.Bot, job: Job) -> List[disnake.Embed, disnake.ui.View]:
+def job_view(bot: commands.Bot, job: Job) -> List[Any]:
     embed = job_embed(bot, job)
     view = SkillSelect(job)
     return embed, view
