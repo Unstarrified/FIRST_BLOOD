@@ -104,7 +104,6 @@ def job_embed(bot: commands.Bot, job: Job) -> disnake.Embed:
     embed.set_thumbnail(url=job.icon)
     if job.image is not None:
         embed.set_image(url=job.image)
-    embed.add_field(name=)
     embed.add_field(name="역할군 주인", value=job.person)
     embed.add_field(name="스킬", value=f"{len(job.skills)}개")
     return embed
