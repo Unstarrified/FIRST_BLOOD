@@ -4,7 +4,7 @@ from typing import List
 
 import disnake
 
-from episodes import Episode
+from utils.episodes import Episode
 
 
 class Job:
