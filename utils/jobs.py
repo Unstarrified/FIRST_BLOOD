@@ -110,7 +110,7 @@ def skill_embed(bot: commands.Bot, skill: Job.Skill) -> disnake.Embed:
     embed = disnake.Embed(title=skill.name, description=skill.description, color=skill.source.color, timestamp=datetime.now(timezone.utc))
     embed.set_author(name=f"연구 보고 - {skill.source.name}", icon_url="https://cdn.discordapp.com/attachments/1068907896882089994/1069235582175281203/IMG_2647.jpg")
     embed.set_footer(text="FIRST BLOOD 프로젝트", icon_url=bot.user.display_avatar.url)
-    embed.set_thumbnail(url=job.icon)
+    embed.set_thumbnail(url=skill.source.icon)
     if skill.image is not None:
         embed.set_image(url=skill.image)
     types = {"active": "액티브", "passive": "패시브"}
