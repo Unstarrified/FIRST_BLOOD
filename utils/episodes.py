@@ -1,6 +1,6 @@
 import json
 
-from jobs import fetch_job
+from utils.job import fetch_job
 
 class Episode:
     def __init__(self, season: str, name: str, number: str, data: dict) -> None:
