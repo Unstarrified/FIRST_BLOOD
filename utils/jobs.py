@@ -92,7 +92,7 @@ def fetch_job(episode: Any, code: str) -> Job:
 
 def job_view(bot: commands.Bot, job: Job) -> List[Any]:
     embed = job_embed(bot, job)
-    view = SkillSelect(job)
+    view = SkillSelection(job)
     return embed, view
 
 def job_embed(bot: commands.Bot, job: Job) -> disnake.Embed:
