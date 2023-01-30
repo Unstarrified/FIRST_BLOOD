@@ -98,7 +98,7 @@ def job_view(bot: commands.Bot, job: Job) -> List[Any]:
 def job_embed(bot: commands.Bot, job: Job) -> disnake.Embed:
     embed = disnake.Embed(title=job.name, description=job.description, color=job.color, timestamp=datetime.now(timezone.utc))
     embed.set_author(name=f"불새위키 - {job.source.name}", icon_url="https://cdn.discordapp.com/attachments/1068907896882089994/1069235582175281203/IMG_2647.jpg")
-    embed.set_footer(text=job.sourcee.quote, icon_url=bot.user.display_avatar.url)
+    embed.set_footer(text=job.source.quote, icon_url=bot.user.display_avatar.url)
     embed.set_thumbnail(url=job.icon)
     if job.image is not None:
         embed.set_image(url=job.image)
