@@ -1,10 +1,8 @@
 import json
 from datetime import datetime, timezone
-from typing import List
+from typing import Any, List
 
 import disnake
-
-from .episodes import Episode
 
 
 class Job:
@@ -29,7 +27,7 @@ class Job:
             self.special = data["special"]
 
 
-    def __init__(self, episode: Episode, data: dict) -> None:
+    def __init__(self, episode: Any, data: dict) -> None:
         self._data = data
         self.source = episode
         self.name = data["name"]
@@ -86,7 +84,7 @@ class SkillSelection(disnake.ui.View):
         self.stop()
 
 
-def fetch_job(episode: Episode, code: str) -> Job:
+def fetch_job(episode: Any, code: str) -> Job:
     data = json.load(open("src/jobs.json", "r", encoding="utf-8"))
     job = data[episode._season][episode._name][episode._number][code]
     job = Job(episode, job)
