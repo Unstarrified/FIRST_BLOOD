@@ -1,11 +1,9 @@
-import json
 import random
-from datetime import datetime, timezone
 
 import disnake
 from disnake.ext import commands
 
-from utils import Episode, fetch_episode
+from utils import Episode, fetch_episode, job_view
 
 
 class Utility(commands.Cog, name="유틸리티"):
@@ -54,7 +52,7 @@ class Utility(commands.Cog, name="유틸리티"):
         if episode in ["s1_heroes_ep4", "s1_apocalypse_ep1"]:
             return await inter.edit_original_message(content=":boom: > 해당 에피소드의 특수성으로 인해 아직 지원되지 않는 기능입니다.")
         episode = fetch_episode(episode)
-        if name == "apocalypse":
+        if episode._name == "apocalypse":
             view = self.MapSelect(episode, inter)
             await inter.edit_original_message(view=view)
             await view.wait()
@@ -71,9 +69,9 @@ class Utility(commands.Cog, name="유틸리티"):
         if sub is not None:
             result = [random.choice(jobs), random.choice(sub)]
 
-        embed, view = job_view(bot, result[0])
+        embed, view = job_view(self.bot, result[0])
         rd = random.randint(1, 100)
-        text = f"> 랜덤 선택된 직업은 **{job.emote} {job.name}**입니다."
+        text = f"> 랜덤 선택된 직업은 **{result[0].emote} {result[0].name}**입니다."
         if rd == 57:
             text = "> ... *(골라줬으니 귀찮게 하지 말고 꺼지라는 눈빛이다.)*"
         await inter.edit_original_message(content=text, embed=embed, view=view)

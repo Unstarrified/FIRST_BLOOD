@@ -72,12 +72,12 @@ class SkillSelection(disnake.ui.View):
         return self.inter.author == inter.author
     
     @disnake.ui.button(label="직업 정보로 돌아가기", style=disnake.ButtonStyle.blurple, emoji="⏮️", row=1)
-    async def _back(self, button: disnake.ui.Button, disnake.MessageInteraction) -> None:
+    async def _back(self, button: disnake.ui.Button, inter: disnake.MessageInteraction) -> None:
         embed = job_embed(self.job)
         await inter.response.edit_message(embed=embed, view=None)
     
     @disnake.ui.button(label="열람 끝내기", style=disnake.ButtonStyle.red, emoji="⏹️", row=1)
-    async def _end(self, button: disnake.ui.Button, disnake.MessageInteraction) -> None:
+    async def _end(self, button: disnake.ui.Button, inter: disnake.MessageInteraction) -> None:
         embed = disnake.Embed(description="곧 연구 보고서 뷰어가 종료됩니다.", color=0xFF0000)
         embed.set_footer(text="FIRST BLOOD 프로젝트", icon_url=self.inter.bot.user.display_avatar.url)
         await inter.response.edit_message(embed=embed)

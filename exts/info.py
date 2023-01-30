@@ -1,4 +1,4 @@
-import disnake
+# import disnake
 from disnake.ext import commands
 
 class Information(commands.Cog, name="정보제공"):

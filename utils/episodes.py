@@ -1,7 +1,9 @@
+import json
+
 from .jobs import fetch_job
 
 class Episode:
-    def __init__(self, season: str, name: str, nubmer: str, data: dict) -> None:
+    def __init__(self, season: str, name: str, number: str, data: dict) -> None:
         self._data = data
         self._season = season
         self._name = name
@@ -12,7 +14,7 @@ class Episode:
         if type(data["maps"]) == list:
             self.maps = fetch_maps(data["maps"])
         else:
-            self.maps = maps
+            self.maps = data["maps"]
         self.hard = data["hard"]
         self.special = data["special"]
         if name == "apocalpyse":
@@ -36,10 +38,13 @@ class Episode:
 
 
 def fetch_episode(code: str) -> Episode:
-    season, name, number = episode.split("_")
+    season, name, number = code.split("_")
     season = season.replace("_", "")
     name = name.replace("_", "")
     number = number.replace("_", "")
     data = json.load(open("src/episodes.json", "r", encoding="utf-8"))
     ep = Episode(season, name, number, data[season][name][number])
     return ep
+
+def fetch_maps(maps: list) -> None:
+    return
