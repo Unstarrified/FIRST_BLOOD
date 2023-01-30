@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 from typing import Any, List
 
 import disnake
-
+from disnake.ext import commands
 
 class Job:
     class Skill:
