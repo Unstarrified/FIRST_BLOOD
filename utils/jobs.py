@@ -71,7 +71,7 @@ class SkillSelection(disnake.ui.View):
     async def interaction_check(self, inter: disnake.MessageInteraction) -> bool:
         return self.inter.author == inter.author
     
-    @disnake.ui.button(label="직업 정보로 돌아가기", style=disnake.ButtonStyle.blurple, emoji="⏹️", row=1)
+    @disnake.ui.button(label="직업 정보로 돌아가기", style=disnake.ButtonStyle.blurple, emoji="⏮️", row=1)
     async def _back(self, button: disnake.ui.Button, disnake.MessageInteraction) -> None:
         embed = job_embed(self.job)
         await inter.response.edit_message(embed=embed, view=None)
