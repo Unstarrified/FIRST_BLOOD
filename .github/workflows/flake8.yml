@@ -1,0 +1,22 @@
+name: Lint
+on: push
+
+jobs:
+  Flake8:
+
+    runs-on: windows-2022
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Using Python 3.9
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+    - name: Dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install flake8
+        python -m pip install -r requirements.txt
+    - name: Flake8 Lint
+      run: |
+        flake8 . --count --select=E9,F401,F54,F72,F70,F8 --show-source --max-complexity=10 --max-line-length=500 --statistics

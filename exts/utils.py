@@ -1,6 +1,5 @@
 import json
 import random
-from typing import Optional
 from datetime import datetime, timezone
 
 import disnake
@@ -34,19 +33,19 @@ class Utility(commands.Cog, name="유틸리티"):
     async def _randomRole(
         self,
         inter: disnake.ApplicationCommandInteraction,
-        episode: Optional[str] = commands.Param(default="s2_division_ep3", name="에피소드", desc="플레이할 에피소드를 선택해주세요.", choices=[
-#            disnake.OptionChoice(name="진격의 좀비 : 에피소드 제로", value="s1_original_ep0"),
+        episode: str = commands.Param(name="에피소드", desc="플레이할 에피소드를 선택해주세요.", choices=[
+            disnake.OptionChoice(name="진격의 좀비 : 에피소드 제로", value="s1_original_ep0"),
             disnake.OptionChoice(name="진격의 좀비 : 에피소드 1", value="s1_original_ep1"),
-#            disnake.OptionChoice(name="진격의 좀비 : 에피소드 2", value="s1_original_ep2"),
-#            disnake.OptionChoice(name="진격의 좀비 : 에피소드 3", value="s1_original_ep3"),
+            disnake.OptionChoice(name="진격의 좀비 : 에피소드 2", value="s1_original_ep2"),
+            disnake.OptionChoice(name="진격의 좀비 : 에피소드 3", value="s1_original_ep3"),
 #            disnake.OptionChoice(name="히어로즈 : 에피소드 1", value="s1_heroes_ep1"),
 #            disnake.OptionChoice(name="히어로즈 : 에피소드 2", value="s1_heroes_ep2"),
 #            disnake.OptionChoice(name="히어로즈 : 에피소드 3", value="s1_heroes_ep3"),
 #            disnake.OptionChoice(name="히어로즈 : 에피소드 4", value="s1_heroes_ep4"),
 #            disnake.OptionChoice(name="아포칼립스", value="s1_apocalypse_ep1"),
-            disnake.OptionChoice(name="디비전 : 에피소드 1", value="s2_division_ep1"),
-            disnake.OptionChoice(name="디비전 : 에피소드 2", value="s2_division_ep2"),
-            disnake.OptionChoice(name="디비전 : 에피소드 3", value="s2_division_ep3"),
+#            disnake.OptionChoice(name="디비전 : 에피소드 1", value="s2_division_ep1"),
+#            disnake.OptionChoice(name="디비전 : 에피소드 2", value="s2_division_ep2"),
+#            disnake.OptionChoice(name="디비전 : 에피소드 3", value="s2_division_ep3"),
         ])
     ) -> None:
         await inter.response.defer(ephemeral=False)
