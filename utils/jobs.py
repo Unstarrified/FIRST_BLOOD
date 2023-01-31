@@ -75,7 +75,7 @@ class SkillSelection(disnake.ui.View):
     
     @disnake.ui.button(label="직업 정보로 돌아가기", style=disnake.ButtonStyle.blurple, emoji="⏮️", row=1)
     async def _back(self, button: disnake.ui.Button, inter: disnake.MessageInteraction) -> None:
-        embed = job_embed(self.job)
+        embed = job_embed(self.inter.bot, self.job)
         await inter.response.edit_message(embed=embed)
     
     @disnake.ui.button(label="열람 끝내기", style=disnake.ButtonStyle.red, emoji="⏹️", row=1)
