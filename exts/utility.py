@@ -84,7 +84,7 @@ class Utility(commands.Cog, name="유틸리티"):
         episodes = ["s1_original_ep0", "s1_original_ep1", "s1_original_ep2", "s1_original_ep3", "s2_division_ep1", "s2_division_ep2", "s2_division_ep3"]
         code = random.choice(episodes)
         episode = fetch_episode(code)
-        embed = episode_embed(episode)
+        embed = episode_embed(self.bot, episode)
         await inter.edit_original_message(content=f"> 랜덤 선택된 에피소드는 **{episode.name}**입니다.", embed=embed)
 
 
