@@ -67,6 +67,7 @@ class SkillSelection(disnake.ui.View):
     def __init__(self, job: Job) -> None:
         super().__init__(timeout=None)
         self.inter = None
+        self.job = job
         self.add_item(self.SkillSelect(job.skills))
     
     async def interaction_check(self, inter: disnake.MessageInteraction) -> bool:
@@ -75,7 +76,7 @@ class SkillSelection(disnake.ui.View):
     @disnake.ui.button(label="직업 정보로 돌아가기", style=disnake.ButtonStyle.blurple, emoji="⏮️", row=1)
     async def _back(self, button: disnake.ui.Button, inter: disnake.MessageInteraction) -> None:
         embed = job_embed(self.job)
-        await inter.response.edit_message(embed=embed, view=None)
+        await inter.response.edit_message(embed=embed)
     
     @disnake.ui.button(label="열람 끝내기", style=disnake.ButtonStyle.red, emoji="⏹️", row=1)
     async def _end(self, button: disnake.ui.Button, inter: disnake.MessageInteraction) -> None:
@@ -120,7 +121,7 @@ def skill_embed(bot: commands.Bot, skill: Job.Skill) -> disnake.Embed:
     embed.add_field(name="스킬 유형", value=types[skill.type], inline=False)
     positions = ['왼쪽', '오른쪽']
     if skill.position is not None:
-        embed.add_field(name="스킬 위치", value=f"{positions[skill.position]} 버튼")
+        embed.add_field(name="스킬 위치", value=f"{positions[skill.position - 1]} 버튼")
     else:
         embed.add_field(name="스킬 위치", value="해당 없음")
     if skill.damage is not None:
