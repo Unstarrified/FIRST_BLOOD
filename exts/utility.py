@@ -3,7 +3,7 @@ import random
 import disnake
 from disnake.ext import commands
 
-from utils.episodes import Episode, fetch_episode
+from utils.episodes import Episode, episode_embed, fetch_episode
 from utils.jobs import job_view
 
 
@@ -77,6 +77,16 @@ class Utility(commands.Cog, name="유틸리티"):
         if rd == 57:
             text = "> ... *(골라줬으니 귀찮게 하지 말고 꺼지라는 눈빛이다.)*"
         await inter.edit_original_message(content=text, embed=embed, view=view)
+
+    @random.sub_command(name="에피소드", description="스토리 모드에서 플레이할 에피소드를 골라줍니다.")
+    async def _randomEpisode(self, inter: disnake.ApplicationCommandInteraction) -> None:
+        await inter.response.defer()
+        episodes = ["s1_original_ep0", "s1_original_ep1", "s1_original_ep2", "s1_original_ep3", "s2_division_ep1", "s2_division_ep2", "s2_division_ep3"]
+        code = random.choice(episodes)
+        episode = fetch_episode(code)
+        embed = episode_embed(episode)
+        await inter.edit_original_message(content=f"> 랜덤 선택된 에피소드는 **{episode.name}**입니다.", embed=embed)
+
 
 def setup(bot: commands.Bot) -> None:
     bot.add_cog(Utility(bot))
