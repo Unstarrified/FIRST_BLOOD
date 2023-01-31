@@ -32,7 +32,7 @@ class Misc(commands.Cog, name="일반"):
     
     @commands.slash_command(name="문의", description="하긴... 제가 봐도 쟤 인성이...")
     async def _inquiry(self, inter: disnake.ApplicationCommandInteraction) -> None:
-        await inter.response.send_message("> <:medic:1068899454603755621> 사용이 어렵거나, 사용 중에 문제가 발생했다면 아래 서버로 알려주세요!\nhttps://discord.gg/ap3DXd9Hdc", ephemeral=True)
+        await inter.response.send_message("> <:medic:1068899454603755621> 사용이 어렵거나, 사용 중에 문제가 발생했다면 아래 서버로 알려주세요!\n> https://discord.gg/ap3DXd9Hdc", ephemeral=True)
 
 
 def setup(bot: commands.Bot) -> None:

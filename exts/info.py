@@ -59,7 +59,7 @@ class Information(commands.Cog, name="정보제공"):
     
     @info.sub_command(name="모드", description="좀비고등학교의 게임 모드에 대한 정보를 표시합니다.")
     async def _infoMode(self, inter: disnake.ApplicationCommandInteraction) -> None:
-        await inter.response.send_message("이 기능은 아직 준비 중입니다.", ephemeral=True)
+        await inter.response.send_message("> <:smasher:1068904705167732737> 이 기능은 아직 준비 중입니다.", ephemeral=True)
 
     @info.sub_command(name="에피소드", description="스토리 모드의 에피소드에 대한 정보를 표시합니다.")
     async def _infoEpisode(self,
