@@ -39,11 +39,11 @@ class Utility(commands.Cog, name="유틸리티"):
             disnake.OptionChoice(name="진격의 좀비 : 에피소드 1", value="s1_original_ep1"),
             disnake.OptionChoice(name="진격의 좀비 : 에피소드 2", value="s1_original_ep2"),
             disnake.OptionChoice(name="진격의 좀비 : 에피소드 3", value="s1_original_ep3"),
-#            disnake.OptionChoice(name="히어로즈 : 에피소드 1", value="s1_heroes_ep1"),
-#            disnake.OptionChoice(name="히어로즈 : 에피소드 2", value="s1_heroes_ep2"),
-#            disnake.OptionChoice(name="히어로즈 : 에피소드 3", value="s1_heroes_ep3"),
-#            disnake.OptionChoice(name="히어로즈 : 에피소드 4", value="s1_heroes_ep4"),
-#            disnake.OptionChoice(name="아포칼립스", value="s1_apocalypse_ep1"),
+            disnake.OptionChoice(name="히어로즈 : 에피소드 1", value="s1_heroes_ep1"),
+            disnake.OptionChoice(name="히어로즈 : 에피소드 2", value="s1_heroes_ep2"),
+            disnake.OptionChoice(name="히어로즈 : 에피소드 3", value="s1_heroes_ep3"),
+            disnake.OptionChoice(name="히어로즈 : 에피소드 4", value="s1_heroes_ep4"),
+            disnake.OptionChoice(name="아포칼립스", value="s1_apocalypse_ep1"),
             disnake.OptionChoice(name="디비전 : 에피소드 1", value="s2_division_ep1"),
             disnake.OptionChoice(name="디비전 : 에피소드 2", value="s2_division_ep2"),
             disnake.OptionChoice(name="디비전 : 에피소드 3", value="s2_division_ep3"),
@@ -53,19 +53,10 @@ class Utility(commands.Cog, name="유틸리티"):
         if episode in ["s1_heroes_ep4", "s1_apocalypse_ep1"]:
             return await inter.edit_original_message(content=":boom: > 해당 에피소드의 특수성으로 인해 아직 지원되지 않는 기능입니다.")
         episode = fetch_episode(episode)
-        if episode._name == "apocalypse":
-            view = self.MapSelect(episode, inter)
-            await inter.edit_original_message(view=view)
-            await view.wait()
-            if view.result is None:
-                return await inter.edit_original_message(content=":boom: > 선택 시간 초과로 인해 취소되었습니다.", view=None)
-            jobs = episode.jobs[view.result]
-            sub = episode.sub[view.result]
-        else:
-            jobs = episode.jobs
-            sub = None
-            if len(episode.sub) != 0:
-                sub = episode.sub
+        jobs = episode.jobs
+        sub = None
+        if len(episode.sub) != 0:
+            sub = episode.sub
         result = [random.choice(jobs)]
         if sub is not None:
             result = [random.choice(jobs), random.choice(sub)]
@@ -73,9 +64,9 @@ class Utility(commands.Cog, name="유틸리티"):
         embed, view = job_view(self.bot, result[0])
         view.inter = inter
         rd = random.randint(1, 100)
-        text = f"> 랜덤 선택된 직업은 **{result[0].emote} {result[0].name}**입니다."
+        text = f"> <:firebird_wiki:1069982735403319296> 랜덤 선택된 직업은 **{result[0].emote} {result[0].name}**입니다."
         if rd == 57:
-            text = "> ... *(골라줬으니 귀찮게 하지 말고 꺼지라는 눈빛이다.)*"
+            text = "> <:firebird_wiki:1069982735403319296> ... *(골라줬으니 귀찮게 하지 말고 꺼지라는 눈빛이다.)*"
         await inter.edit_original_message(content=text, embed=embed, view=view)
 
     @random.sub_command(name="에피소드", description="스토리 모드에서 플레이할 에피소드를 골라줍니다.")
@@ -85,7 +76,11 @@ class Utility(commands.Cog, name="유틸리티"):
         code = random.choice(episodes)
         episode = fetch_episode(code)
         embed = episode_embed(self.bot, episode)
-        await inter.edit_original_message(content=f"> 랜덤 선택된 에피소드는 **{episode.name}**입니다.", embed=embed)
+        rd = random.randint(1, 100)
+        text = f"> <:firebird_wiki:1069982735403319296> 랜덤 선택된 에피소드는 **{episode.name}**입니다."
+        if rd == 57:
+            text = "> <:firebird_wiki:1069982735403319296> ... *(골라줬으니 귀찮게 하지 말고 꺼지라는 눈빛이다.)*"
+        await inter.edit_original_message(content=text, embed=embed)
 
 
 def setup(bot: commands.Bot) -> None:
